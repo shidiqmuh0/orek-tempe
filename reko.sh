@@ -1,3 +1,8 @@
+# Update
+sudo apt-get update
+sudo apt-get install build-essential
+
+
 # Install Rust and Cargo
 curl https://sh.rustup.rs -sSf | sh
 source $HOME/.cargo/env  # Memperbaharui PATH environment setelah menginstal Rust/Cargo
