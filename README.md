@@ -6,7 +6,7 @@ Siapkan terlebih dahulu api solana dari alchemy https://dashboard.alchemy.com/
 
 ```bash
 
-wget -qO reko.sh https://raw.githubusercontent.com/shidiqmuh0/orek-tempe/main/orek-tempe.sh; chmod +x orek.sh; ./orek.sh
+wget -qO orek.sh https://raw.githubusercontent.com/shidiqmuh0/orek-tempe/main/orek-tempe.sh; chmod +x orek.sh; ./orek.sh
 ```
 
 ## Reko VPS
