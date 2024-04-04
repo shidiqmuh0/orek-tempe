@@ -1,4 +1,4 @@
-# Orek Tempe untuk CodeSpaces
+# Orek Tempe
 
 Siapkan terlebih dahulu api solana dari alchemy https://dashboard.alchemy.com/
 
