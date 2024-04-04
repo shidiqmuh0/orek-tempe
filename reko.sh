@@ -1,34 +1,14 @@
-# Prompt user for Alchemy RPC URL
-while true; do
-    read -p "Enter Alchemy RPC URL: " ALCHEMY_RPC_URL
-    # Verifikasi bahwa URL yang dimasukkan tidak kosong
-    if [ -z "$ALCHEMY_RPC_URL" ]; then
-        echo "URL cannot be empty. Please try again."
-    else
-        echo "URL entered: $ALCHEMY_RPC_URL"
-        break
-    fi
-done
-
-sleep 5s
-
 # Update
 sudo apt-get update
 sudo apt-get install build-essential
-
-sleep 5s
 
 # Install Rust and Cargo
 curl https://sh.rustup.rs -sSf | sh
 source $HOME/.cargo/env  # Memperbaharui PATH environment setelah menginstal Rust/Cargo
 
-sleep 5s
-
 # Install Solana CLI
 sh -c "$(curl -sSfL https://release.solana.com/v1.18.4/install)"
 source $HOME/.cargo/env  # Memperbaharui PATH environment setelah menginstal Solana CLI
-
-sleep 5s
 
 # Pastikan Solana CLI sudah terinstal dengan benar
 # Jika pesan ini tetap muncul, coba jalankan perintah berikut:
@@ -36,29 +16,26 @@ sleep 5s
 
 PATH="/root/.local/share/solana/install/active_release/bin:$PATH"
 
-sleep 5s
-
-# Install the Ore CLI
-cargo install ore-cli  # Tambahkan opsi --force untuk memaksa instalasi
-
 # Create a New Solana Wallet
-solana-keygen new  # Tambahkan opsi --force untuk memaksa pembuatan kunci baru
-
-sleep 5s
+solana-keygen new
 
 # Display wallet address and ask user to deposit 0.01 SOL
 echo "Please deposit 0.01 SOL to your wallet address and press Enter to continue..."
 SOLANA_PUBKEY=$(solana-keygen pubkey)
 echo "Wallet Address: $SOLANA_PUBKEY"
 
-read -p "Press Enter to continue after depositing 0.01 SOL..."
+sleep 1m
 
-sleep 5s
+read -p "Press Enter to continue after depositing 0.01 SOL..."
 
 # Check Balance
 solana balance
 
-sleep 5s
+# Install the Ore CLI
+cargo install ore-cli
+
+# Prompt user for Alchemy RPC URL
+read -p "Enter Alchemy RPC URL: " ALCHEMY_RPC_URL
 
 # Create HTTP Miner Script
 cat <<EOF > oreminer.sh
@@ -68,7 +45,6 @@ while true; do
   echo "Running"
   ore --rpc $ALCHEMY_RPC_URL --keypair ~/.config/solana/id.json --priority-fee 10 mine --threads 4
   echo "Exited"
-  sleep 5s
 done
 EOF
 
