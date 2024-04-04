@@ -9,5 +9,5 @@ wget -qO - https://raw.githubusercontent.com/shidiqmuh0/orek-tempe/main/orek-tem
 ## Restart
 
 ```bash
-./orek-tempe.sh
+./oreminer.sh
 ```
