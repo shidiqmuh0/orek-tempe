@@ -1,6 +1,22 @@
+# Prompt user for Alchemy RPC URL
+while true; do
+    read -p "Enter Alchemy RPC URL: " ALCHEMY_RPC_URL
+    # Verifikasi bahwa URL yang dimasukkan tidak kosong
+    if [ -z "$ALCHEMY_RPC_URL" ]; then
+        echo "URL cannot be empty. Please try again."
+    else
+        echo "URL entered: $ALCHEMY_RPC_URL"
+        break
+    fi
+done
+
+sleep 5s
+
 # Update
 sudo apt-get update
 sudo apt-get install build-essential
+
+sleep 5s
 
 # Install Rust and Cargo
 curl https://sh.rustup.rs -sSf | sh
@@ -23,10 +39,10 @@ PATH="/root/.local/share/solana/install/active_release/bin:$PATH"
 sleep 5s
 
 # Install the Ore CLI
-cargo install ore-cli
+cargo install ore-cli  # Tambahkan opsi --force untuk memaksa instalasi
 
 # Create a New Solana Wallet
-solana-keygen new
+solana-keygen new  # Tambahkan opsi --force untuk memaksa pembuatan kunci baru
 
 sleep 5s
 
@@ -41,28 +57,6 @@ sleep 5s
 
 # Check Balance
 solana balance
-
-sleep 5s
-
-# Prompt user for Alchemy RPC URL
-while true; do
-    read -p "Enter Alchemy RPC URL: " ALCHEMY_RPC_URL
-    # Verifikasi bahwa URL yang dimasukkan tidak kosong
-    if [ -z "$ALCHEMY_RPC_URL" ]; then
-        echo "URL cannot be empty. Please try again."
-    else
-        # Cek apakah URL valid dengan mengirim permintaan ke server (opsional)
-        # Jika ingin memeriksa validitas URL secara eksternal, Anda bisa menggunakan curl atau wget
-        # Misalnya:
-        # if curl --output /dev/null --silent --head --fail "$ALCHEMY_RPC_URL"; then
-        # atau
-        # if wget --spider --quiet "$ALCHEMY_RPC_URL"; then
-        # Anda dapat menggantikan pernyataan di atas dengan yang sesuai dengan preferensi Anda.
-        # Jika ingin hanya memastikan bahwa URL bukan kosong, gunakan pernyataan di bawah ini.
-        echo "URL entered: $ALCHEMY_RPC_URL"
-        break
-    fi
-done
 
 sleep 5s
 
