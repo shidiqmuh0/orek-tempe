@@ -16,6 +16,11 @@ sleep 5s
 
 PATH="/root/.local/share/solana/install/active_release/bin:$PATH"
 
+sleep 5s
+
+# Install the Ore CLI
+cargo install ore-cli
+
 # Create a New Solana Wallet
 solana-keygen new
 
@@ -32,11 +37,6 @@ sleep 5s
 
 # Check Balance
 solana balance
-
-sleep 5s
-
-# Install the Ore CLI
-cargo install ore-cli
 
 sleep 5s
 
