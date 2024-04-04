@@ -45,7 +45,24 @@ solana balance
 sleep 5s
 
 # Prompt user for Alchemy RPC URL
-read -p "Enter Alchemy RPC URL: " ALCHEMY_RPC_URL
+while true; do
+    read -p "Enter Alchemy RPC URL: " ALCHEMY_RPC_URL
+    # Verifikasi bahwa URL yang dimasukkan tidak kosong
+    if [ -z "$ALCHEMY_RPC_URL" ]; then
+        echo "URL cannot be empty. Please try again."
+    else
+        # Cek apakah URL valid dengan mengirim permintaan ke server (opsional)
+        # Jika ingin memeriksa validitas URL secara eksternal, Anda bisa menggunakan curl atau wget
+        # Misalnya:
+        # if curl --output /dev/null --silent --head --fail "$ALCHEMY_RPC_URL"; then
+        # atau
+        # if wget --spider --quiet "$ALCHEMY_RPC_URL"; then
+        # Anda dapat menggantikan pernyataan di atas dengan yang sesuai dengan preferensi Anda.
+        # Jika ingin hanya memastikan bahwa URL bukan kosong, gunakan pernyataan di bawah ini.
+        echo "URL entered: $ALCHEMY_RPC_URL"
+        break
+    fi
+done
 
 sleep 5s
 
