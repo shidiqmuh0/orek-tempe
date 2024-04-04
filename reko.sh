@@ -19,6 +19,9 @@ solana-keygen new
 echo "Please deposit 0.01 SOL to your wallet address and press Enter to continue..."
 SOLANA_PUBKEY=$(solana-keygen pubkey)
 echo "Wallet Address: $SOLANA_PUBKEY"
+
+sleep 1m
+
 read -p "Press Enter to continue after depositing 0.01 SOL..."
 
 # Check Balance
