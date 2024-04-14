@@ -21,7 +21,7 @@ wget -qO reko.sh https://raw.githubusercontent.com/shidiqmuh0/orek-tempe/main/re
 
 ## Backup Keystore VPS
 ```bash
-cat 
+cat /.config/solana/id.json
 ```
 
 ## Restart
